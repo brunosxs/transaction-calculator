@@ -2,6 +2,9 @@ import { Entry } from '../model/Entry';
 
 import data from './data.json';
 
+/**
+ * Centralized point to get the entries
+ */
 export default class DataService {
     private static instance: DataService;
     public static getInstance(): DataService {
@@ -11,6 +14,11 @@ export default class DataService {
         return this.instance;
     }
 
+    /**
+     * Gets all the adquirentes
+     * @param {boolean} transform - If true, all the Entry names will be preceeded by 'Adquirente'
+     * @return {Entry[]} - An array with all the entries
+     */
     getAll(transform: boolean): Entry[] {
         let entries: Entry[] = [];
         if (transform) {
@@ -36,6 +44,9 @@ export default class DataService {
         })[0];
     }
 
+    /**
+     * @return {string[]} Returns an array with all the Adquirentes names
+     */
     getAllAdquirenteNames(): string[] {
         const returnedNames: string[] = [];
         for (let i = 0; i < data.length; i++) {
