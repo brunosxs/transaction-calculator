@@ -7,8 +7,7 @@ import * as dotenv from 'dotenv';
 import { apiErrorHandler } from './middleware/apiErrorHandler';
 import { requestValidator } from './middleware/requestValidator';
 
-dotenv.config()
-
+dotenv.config();
 
 export const app = express();
 
@@ -16,10 +15,10 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 
-app.get("/", Controller.helloWorld);
+app.get('/', Controller.helloWorld);
 
-app.get("/mdr", Controller.merchantDiscountRate);
+app.get('/mdr', Controller.merchantDiscountRate);
 
-app.post("/transaction", requestValidator, Controller.transaction);
+app.post('/transaction', requestValidator, Controller.transaction);
 
-app.use(apiErrorHandler)
+app.use(apiErrorHandler);

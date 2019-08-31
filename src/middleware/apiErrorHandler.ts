@@ -1,6 +1,6 @@
-import { ErrorRequestHandler, Request, Response, NextFunction } from 'express';
+import { ErrorRequestHandler, Request, Response } from 'express';
 
-export const apiErrorHandler: ErrorRequestHandler = (err, req: Request, res: Response, next: NextFunction) => {
+export const apiErrorHandler: ErrorRequestHandler = async (err, req: Request, res: Response): Promise<Response> => {
     if (process.env.NODE_ENV === 'development') {
         console.log(err);
         return res.status(err.status).json(err);
